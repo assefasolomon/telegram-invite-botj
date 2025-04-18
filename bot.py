@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 # Dictionary to track user invites
 user_invites = {}
 pending_joins = {}
-REQUIRED_INVITES = 10
+REQUIRED_INVITES = 100
 
 # Welcome new users and assign inviter if they joined via link
 async def track_joins(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -39,7 +39,13 @@ async def track_joins(update: Update, context: ContextTypes.DEFAULT_TYPE):
             del pending_joins[user_id]
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
-            text=f"Welcome {member.full_name}!"
+            text=f"እንኳን፤ለብረሃነ፤ትንሳኤው፤በሰላም፤ አደረሶት፤ለመሸለም፤ጓደኞቻችሁን፤Add፤አድርጉ። 
+
+100 ሰው Add ያደረገ የሚሸለመው 5,000 Add ያደረገ የሚሸለመውብር።
+200 Add ያደረገ የሚሸለመው 10,000።
+300 Add ያደረገ የሚሸለመው 15,000።
+400 Add ያደረገ የሚሸለመው 20,000።
+500 እና ከዛ በላይ Add ያደረገ የሚሸለመው 25,000። {member.full_name}!"
         )
 
 # Track users attempting to post
@@ -58,7 +64,8 @@ async def track_posts(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
             text=(
-                f"You need to invite at least {REQUIRED_INVITES} friends to post.\n"
+                f"እስካሁን፤ድረስ፡ምንም፤ጓደኛ፤Add፤አላደረጉም።
+ {REQUIRED_INVITES} Add፤አድርገው፤ሲጨርሱ፤ የኢትዮጵያ፤ንግድ፤Bank Account Number ይላኩልን።.\n"
                 f"You have invited {len(invited)}."
             )
         )
