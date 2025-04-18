@@ -13,6 +13,8 @@ from telegram.ext import (
     filters,
 )
 import asyncio
+print("Bot is starting...")
+
 
 # Load environment variables
 load_dotenv()
@@ -39,13 +41,13 @@ async def track_joins(update: Update, context: ContextTypes.DEFAULT_TYPE):
             del pending_joins[user_id]
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
-            text=f"እንኳን፤ለብረሃነ፤ትንሳኤው፤በሰላም፤ አደረሶት፤ለመሸለም፤ጓደኞቻችሁን፤Add፤አድርጉ። 
-
-100 ሰው Add ያደረገ የሚሸለመው 5,000 Add ያደረገ የሚሸለመውብር።
-200 Add ያደረገ የሚሸለመው 10,000።
-300 Add ያደረገ የሚሸለመው 15,000።
-400 Add ያደረገ የሚሸለመው 20,000።
-500 እና ከዛ በላይ Add ያደረገ የሚሸለመው 25,000። {member.full_name}!"
+            text=(
+                f"100 ሰው Add ያደረገ የሚሸለመው 5,000 Add ያደረገ የሚሸለመውብር።"
+                f"200 Add ያደረገ የሚሸለመው 10,000።"
+                f"300 Add ያደረገ የሚሸለመው 15,000።"
+                f"400 Add ያደረገ የሚሸለመው 20,000።"
+                f"500 እና ከዛ በላይ Add ያደረገ የሚሸለመው 25,000። {member.full_name}!"
+            )
         )
 
 # Track users attempting to post
@@ -64,8 +66,8 @@ async def track_posts(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
             text=(
-                f"እስካሁን፤ድረስ፡ምንም፤ጓደኛ፤Add፤አላደረጉም።
- {REQUIRED_INVITES} Add፤አድርገው፤ሲጨርሱ፤ የኢትዮጵያ፤ንግድ፤Bank Account Number ይላኩልን።.\n"
+                f"እስካሁን፤ድረስ፡ምንም፤ጓደኛ፤አላደረጉም\n"
+                f"{REQUIRED_INVITES} Add፤አድርገው፤ሲጨርሱ፤ የኢትዮጵያ፤ንግድ፤Bank Account Number ይላኩልን።\n"
                 f"You have invited {len(invited)}."
             )
         )
@@ -110,8 +112,6 @@ if __name__ == '__main__':
             loop.create_task(run_bot())
             loop.run_forever()
         else:
-            raise
-
             raise
 
 
